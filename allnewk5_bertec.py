@@ -6,21 +6,21 @@ import random
 import time
 
 def main():  
-    subject_name = "AB16"
+    subject_name = "SUB01"
 
-    task = "LG"; speed_1 = 1.2
+    # task = "LG"; speed_1 = 1.2
     # task = "RA"; speed_1 = 0.8
-    # task = "RD"; speed_1 = -0.8
+    task = "RD"; speed_1 = -0.8
 
     magnitude = "20p"
 
-    delay = "30ms"
-    # delay = "100ms"
-    # delay = "170ms"
-    # delay = "240ms"
-    # delay = "310ms"
+    # delay = "40ms"
+    # delay = "110ms"
+    # delay = "180ms"
+    # delay = "250ms"
+    # delay = "320ms"
 
-    # magnitude = "NoAssi"; delay = ""
+    magnitude = "NoAssi"; delay = ""
 
     trial_start_sec = 5  # To reach steady state before starting the trial
     trial_notes = " "
@@ -32,6 +32,8 @@ def main():
     command = 1
     trial_number = 0
 
+    target_duration_sec = 365
+    
     while(command):
         
         trial_number += 1
@@ -53,13 +55,12 @@ def main():
         command = input("Input protocol number (exit for 0):")
         
         if (command == '1'):
-            target_duration_sec = 125
             
-            # sleep(9) # In case of one person operation, give some time to get up on the treadmill
+            # sleep(5) # In case of one person operation, give some time to get up on the treadmill
 
             # 2. Trigger Nexus Capture
             Nexus.notify()
-            # sleep(2)
+            sleep(2)
 
             print(f"\nTreadmill speed: {speed_1} m/s")
             params = {
@@ -72,14 +73,11 @@ def main():
             
             sleep(target_duration_sec)
             
-            # additional time for exo off before treadmill stops
-            sleep(4)
-            
             # 2. Stop Treadmill
             print("\nTreadmill stop")
             params = {
-                'leftVel': '0',                'leftAccel': '0.2',                'leftDecel': '0.2',
-                'rightVel': '0',               'rightAccel': '0.2',               'rightDecel': '0.2'}
+                'leftVel': '0',                'leftAccel': '0.3',                'leftDecel': '0.3',
+                'rightVel': '0',               'rightAccel': '0.3',               'rightDecel': '0.3'}
             res = Bertec.run_treadmill(params['leftVel'], params['leftAccel'], params['leftDecel'], params['rightVel'], params['rightAccel'], params['rightDecel'])
         
 
