@@ -6,7 +6,7 @@ import random
 import time
 
 def main():  
-    subject_name = "SUB01"
+    subject_name = "SUB03"
 
     # task = "LG"; speed_1 = 1.2
     # task = "RA"; speed_1 = 0.8
@@ -14,13 +14,13 @@ def main():
 
     magnitude = "20p"
 
-    # delay = "40ms"
+    delay = "40ms"
     # delay = "110ms"
     # delay = "180ms"
     # delay = "250ms"
     # delay = "320ms"
 
-    magnitude = "NoAssi"; delay = ""
+    # magnitude = "NoAssi"; delay = ""
 
     trial_start_sec = 5  # To reach steady state before starting the trial
     trial_notes = " "
@@ -32,7 +32,6 @@ def main():
     command = 1
     trial_number = 0
 
-    target_duration_sec = 365
     
     while(command):
         
@@ -55,7 +54,7 @@ def main():
         command = input("Input protocol number (exit for 0):")
         
         if (command == '1'):
-            
+            target_duration_sec = 365
             # sleep(5) # In case of one person operation, give some time to get up on the treadmill
 
             # 2. Trigger Nexus Capture
